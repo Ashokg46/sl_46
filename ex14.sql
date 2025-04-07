@@ -1,0 +1,26 @@
+CREATE TABLE emp (
+    empno NUMBER PRIMARY KEY,
+    ename VARCHAR2(50),
+    salary NUMBER
+);
+
+INSERT INTO emp VALUES (1001, 'Alice', 50000);
+INSERT INTO emp VALUES (1002, 'Bob', 60000);
+INSERT INTO emp VALUES (1003, 'Charlie', 70000);
+
+
+DECLARE
+    v_num NUMBER := 10;
+    v_den NUMBER := 0;
+    v_arr DBMS_SQL.NUMBER_TABLE;
+    v_date DATE := 'invalid';
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(v_num / v_den);
+EXCEPTION
+    WHEN ZERO_DIVIDE THEN DBMS_OUTPUT.PUT_LINE('Divide by zero');
+    WHEN VALUE_ERROR THEN DBMS_OUTPUT.PUT_LINE('Value error');
+    WHEN NO_DATA_FOUND THEN DBMS_OUTPUT.PUT_LINE('No data found');
+    WHEN TOO_MANY_ROWS THEN DBMS_OUTPUT.PUT_LINE('Too many rows');
+    WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Unknown error');
+END;
+/
